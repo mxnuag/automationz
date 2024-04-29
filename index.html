@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Here!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/33762d5ec2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#" id="signup-form">
+                <h1>Sign Up</h1>
+
+                <input id="name" type="text" placeholder="Name" required>
+                <input id="contact" type="number" placeholder="contact" required>
+                <input id="city" type="text" placeholder="city" required>
+
+                <input type="email" placeholder="Email" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+
+                <button id="register" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+
+        <div class="container" id="container">
+
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+
+                    <!-- <span> use your email for Sign IN</span> -->
+
+                    <input type="email" placeholder="Email" id="login_email" required>
+                    <input type="password" placeholder="Password" id="login_password" required>
+                    <button id="login">Sign IN</button>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Login if you are already a member</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details to start with</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyCOlfn3kT5ZNscgMxaaTpGsc-WX0drnN-o",
+        authDomain: "automation-41963.firebaseapp.com",
+        projectId: "automation-41963",
+        storageBucket: "automation-41963.appspot.com",
+        messagingSenderId: "549392485769",
+        appId: "1:549392485769:web:9ed1217d343283c4fd2558"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    console.log(app);
+    console.log(app);
+
+    // Password regex for validation
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()-+=^])(?!.*\s).{8,15}$/;
+
+    //----- Login code start      
+    document.getElementById("login").addEventListener("click", function (event) {
+        event.preventDefault()
+        var email = document.getElementById("login_email").value;
+        var password = document.getElementById("login_password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                location.replace("./home.html");
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                alert(errorMessage);
+            });
+    });
+    
+
+
+
+    //----- New Registration code start      
+    document.getElementById("register").addEventListener("click", function (event) {
+        event.preventDefault();
+        var name = document.getElementById("name").value;
+        var contact = document.getElementById("contact").value;
+        var city = document.getElementById("city").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+
+        // Check if password meets the requirements
+        if(name=="" || contact=="" || city=="" || email==""|| password==""|| confirmPassword==""){
+            alert("Credentials not given");
+            return;
+        }
+
+        if (!passwordRegex.test(password)) {
+            alert("Password must be between 8 to 15 characters, contain at least one numeric digit, one uppercase and one lowercase letter, and one special character.");
+            return;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match. Please re-enter.");
+            return;
+        }
+
+        //For new registration
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                location.replace("./index.html");
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(errorMessage);
+                alert(error);
+            });
+    });
+    //----- End
+</script>
+
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHA</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- normalize css -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+
+    <!-- header -->
+    <header class="header bg-blue">
+        <nav class="navbar bg-blue">
+            <div class="container flex">
+                <a href="index.html" class="navbar-brand">
+                    <img src="images/l1ogo.png" alt="site logo">
+                </a>
+                <button type="button" class="navbar-show-btn">
+                    <img src="images/ham-menu-icon.png">
+                </button>
+
+                <div class="navbar-collapse bg-white">
+                    <button type="button" class="navbar-hide-btn">
+                        <img src="images/close-icon.png">
+                    </button>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a id="home" href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#package-service" class="nav-link">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#doc-panel" class="nav-link">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#departments" class="nav-link">Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#posts" class="nav-link">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="search-bar">
+                        <form>
+                            <div class="search-bar-box flex">
+                                <span class="search-icon flex">
+                                    <img src="images/search-icon-dark.png">
+                                </span>
+                                <input type="search" class="search-control" placeholder="Search here">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+       <div class="header-inner text-white text-center">
+            <div class="container grid">
+                <div class="header-inner-left">
+                    <br>
+                    <br>
+                    <h1>Your most trusted<br> <span>Mental health</span></h1>
+                    <p class="lead">analyser with best services for you</p>
+                    <p class="text text-md">Welcome to MHA, where your journey to mental well-being takes center stage.
+                        At MHA, we believe in empowering individuals on their path to optimal mental health and
+                        vitality.</p>
+
+                    <p>'Your Path to Mental Wellness Begins Here'</p>
+                    <div class="btn-group">
+                        <button  class="open-button btn btn-white" onclick="openForm()">Book your Slot</button>
+                        <button class="open-button btn btn-white" onclick="startQuiz()">Take Mental Health Quiz</button>
+                    </div>
+                </div>
+                <div class="header-inner-right">
+                    <img src="./1.jpg">
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- end of header and quiz form -->
+
+
+    <div class="form-popup" id="quiz">
+        <form id="quizForm" class="form-container" onsubmit="submitQuiz(event)">
+            <h1>Mental Health Analyzer Quiz</h1>
+            <p>Answer the following questions to assess your mental health:</p>
+            
+            <div class="question">
+                <label for="q1">1. How often do you feel overwhelmed or stressed?</label><br>
+                <input type="radio" id="q1_rarely" name="q1" value="rarely" required>
+                <label for="q1_rarely"> Rarely</label><br>
+                <input type="radio" id="q1_sometimes" name="q1" value="sometimes">
+                <label for="q1_sometimes"> Sometimes</label><br>
+                <input type="radio" id="q1_often" name="q1" value="often">
+                <label for="q1_often"> Often</label><br>
+            </div>
+            
+            <div class="question">
+                <label for="q2">2. Do you often experience changes in your sleep patterns?</label><br>
+                <input type="radio" id="q2_yes" name="q2" value="yes" required>
+                <label for="q2_yes"> Yes</label><br>
+                <input type="radio" id="q2_no" name="q2" value="no">
+                <label for="q2_no"> No</label><br>
+            </div>
+            
+            <div class="question">
+                <label for="q3">3. How would you rate your overall mood on a typical day?</label><br>
+                <input type="radio" id="q3_positive" name="q3" value="positive" required>
+                <label for="q3_positive"> Positive</label><br>
+                <input type="radio" id="q3_neutral" name="q3" value="neutral">
+                <label for="q3_neutral"> Neutral</label><br>
+                <input type="radio" id="q3_negative" name="q3" value="negative">
+                <label for="q3_negative"> Negative</label><br>
+            </div>
+            
+            <div class="question">
+                <label for="q4">4. Do you find it easy to concentrate on tasks?</label><br>
+                <input type="radio" id="q4_yes" name="q4" value="yes" required>
+                <label for="q4_yes"> Yes</label><br>
+                <input type="radio" id="q4_no" name="q4" value="no">
+                <label for="q4_no"> No</label><br>
+            </div>
+            
+            <div class="question">
+                <label for="q5">5. How often do you engage in activities you enjoy?</label><br>
+                <input type="radio" id="q5_rarely" name="q5" value="rarely" required>
+                <label for="q5_rarely"> Rarely</label><br>
+                <input type="radio" id="q5_sometimes" name="q5" value="sometimes">
+                <label for="q5_sometimes"> Sometimes</label><br>
+                <input type="radio" id="q5_often" name="q5" value="often">
+                <label for="q5_often"> Often</label><br>
+            </div>
+            
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    
+    <!-- The booking form -->
+
+
+    <div class="form-popup" id="myForm">
+        <form  action="https://api.web3forms.com/submit" method="POST" return false; class="form-container">
+            <input type="hidden" name="access_key" value="edb52ad4-597e-4a08-bf10-59bc3ac2ffa7">
+            <h1>Book an Appointment</h1>
+
+            <label for="email"><b>Name</b></label>
+            <input type="text" name="name" placeholder="Enter Name" name="text" required>
+            <label for="email"><b>Phone No</b></label>
+            <input type="text" name="phone" placeholder="Enter phone no" name="email" required>
+            <label for="email"><b>Your preferred time</b></label>
+            <input type="text" placeholder="Enter Time" name="email" required>
+            <label for="email"><b>Message</b></label>
+            <input type="text" name="message" placeholder="Enter Message" name="text" required>
+
+
+
+            <button id="bookslot" type="submit" class="btn">Book</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    
+    <main>
+        <!-- about section -->
+        <section id="about" class="about py">
+            <div class="about-inner">
+                <div class="container grid">
+                    <div class="about-left text-center">
+                        <div class="section-head">
+                            <h2>About Us</h2>
+                            <div class="border-line"></div>
+                        </div>
+                        <p class="text text-lg">MHA, The Mental Health Analyser. Project for Test Automation</p>
+                        <a href="#" class="btn btn-white">Learn More</a>
+                    </div>
+                    <div class="about-right flex">
+                        <div class="img">
+                            <img src="images/about-img.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of about section -->
+
+        <!-- banner one -->
+        <section id="banner-one" class="banner-one text-center">
+            <div class="container text-white">
+                <blockquote class="lead"><i class="fas fa-quote-left"></i> Mental health…is not a destination, but a process. It’s about how you drive, not where you’re going <i
+                        class="fas fa-quote-right"></i></blockquote>
+                <small class="text text-sm">Noam Shpancer</small>
+            </div>
+        </section>
+        <!-- end of banner one -->
+
+        <!-- services section -->
+        <section id="services" class="services py">
+            <div class="container">
+                <div class="section-head text-center">
+                    <h2 class="lead">The Best Doctor gives the least medicines</h2>
+                    <p class="text text-lg">A perfect way to show your hospital services</p>
+                    <div class="line-art flex">
+                        <div></div>
+                        <img src="images/4-dots.png">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="services-inner text-center grid">
+                    <article class="service-item">
+                        <div class="icon">
+                            <img src="images/service-icon-1.png">
+                        </div>
+                        <h3>Cardio Monitoring</h3>
+                        <p class="text text-sm">Our Cardio Monitoring services go beyond routine check-ups. We employ
+                            state-of-the-art technology to track and analyze your heart's activity, providing real-time
+                            insights into its performance</p>
+                    </article>
+
+                    <article class="service-item">
+                        <div class="icon">
+                            <img src="images/service-icon-2.png">
+                        </div>
+                        <h3>Medical Treatment</h3>
+                        <p class="text text-sm">Our state-of-the-art facilities are equipped with the latest medical
+                            advancements, allowing us to offer a comprehensive suite of diagnostic, therapeutic, and
+                            preventive services.</p>
+                    </article>
+
+                    <article class="service-item">
+                        <div class="icon">
+                            <img src="images/service-icon-3.png">
+                        </div>
+                        <h3>Emergency Help</h3>
+                        <p class="text text-sm">Our dedicated team of healthcare professionals is trained to respond
+                            swiftly to emergencies, ensuring that you receive the urgent care required to address
+                            critical situations. Whether it's a sudden illness, injury, or any other medical emergency.
+                        </p>
+                    </article>
+
+                    <article class="service-item">
+                        <div class="icon">
+                            <img src="images/service-icon-4.png">
+                        </div>
+                        <h3>First Aid</h3>
+                        <p class="text text-sm">Your well-being is our priority, and our First Aid services exemplify
+                            our commitment to offering comprehensive healthcare solutions. Trust us to be your reliable
+                            partner in delivering prompt and efficient first aid care whenever you need it.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- end of services section -->
+
+        <!-- banner two section -->
+        <section id="banner-two" class="banner-two text-center">
+            <div class="container grid">
+                <div class="banner-two-left">
+                    <img src="images/banner-2-img.png">
+                </div>
+                <div class="banner-two-right">
+                    <p class="lead text-white">When you are young and healthy, it never occurs to you that in a single
+                        second your whole life could change.</p>
+                </div>
+            </div>
+        </section>
+        <!-- end of banner two section -->
+
+        <!-- doctors section -->
+        <section id="doc-panel" class="doc-panel py">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Our Doctor Panel</h2>
+                </div>
+
+                <div class="doc-panel-inner grid">
+                    <div class="doc-panel-item">
+                        <div class="img flex">
+                            <img src="images/doc-1.png" alt="doctor image">
+                            <div class="info text-center bg-blue text-white flex">
+                                <p class="lead">samuel goe</p>
+                                <p class="text-lg">Medicine</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-panel-item">
+                        <div class="img flex">
+                            <img src="images/doc-2.png" alt="doctor image">
+                            <div class="info text-center bg-blue text-white flex">
+                                <p class="lead">elizabeth ira</p>
+                                <p class="text-lg">Cardiology</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-panel-item">
+                        <div class="img flex">
+                            <img src="images/doc-3.png" alt="doctor image">
+                            <div class="info text-center bg-blue text-white flex">
+                                <p class="lead">tanya collins</p>
+                                <p class="text-lg">Orthopedic Surgeon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of doctors section -->
+
+    <!-- departments section -->
+    <section id="departments" class="departments py">
+        <div class="container">
+            <div class="section-head text-center">
+                <h2>Departments</h2>
+            </div>
+            <div class="departments-inner flex">
+                <div class="department-item">
+                    <div class="icon">
+                        <img src="images/neurology.png" alt="Neurology icon" style="width: 200px; height: 200px;">
+                    </div>
+                    <h3>Neurology</h3>
+                    <p class="text text-sm">Our neurology department specializes in the diagnosis and management of
+                        neurological disorders, including stroke, epilepsy, and Parkinson's disease. Our team of
+                        experienced neurologists provides compassionate care and innovative treatments to improve
+                        neurological function and quality of life.</p>
+                    <a href="#" class="btn btn-blue">Read More</a>
+                </div>
+
+                <div class="department-item">
+                    <div class="icon">
+                        <img src="images/ps.png" alt="Psychology icon" style="width: 200px; height: 200px;">
+                    </div>
+                    <h3>Psychology</h3>
+                    <p class="text text-sm">Our psychology department offers comprehensive mental health services,
+                        including therapy, counseling, and psychological assessments. Our team of licensed psychologists
+                        and therapists is dedicated to providing personalized care to support your emotional well-being
+                        and mental health.</p>
+                    <a href="#" class="btn btn-blue">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of departments section -->
+
+
+
+        <!-- package services section -->
+        <section id="package-service" class="package-service py text-center">
+            <div class="container">
+                <div class="package-service-head text-white">
+                    <h2>Package Service</h2>
+                    <p class="text text-lg">Best service package for you</p>
+                </div>
+                <div class="package-service-inner grid">
+                    <div class="package-service-item bg-white">
+                        <div class="icon flex">
+                            <i class="fas fa-phone fa-2x"></i>
+                        </div>
+                        <h3>Regular Case</h3>
+                        <p class="text text-sm">"Our Regular Case package is tailored for routine health check-ups and
+                            non-emergency medical needs. It includes comprehensive assessments, consultations, and
+                            essential tests to ensure your well-being".</p>
+                        <a href="#" class="btn btn-blue">Read More</a>
+                    </div>
+
+                    <div class="package-service-item bg-white">
+                        <div class="icon flex">
+                            <i class="fas fa-calendar-alt fa-2x"></i>
+                        </div>
+                        <h3>Serious Case</h3>
+                        <p class="text text-sm">For more complex health concerns that require specialized attention, our
+                            Serious Case package is designed to address intricate medical conditions. With a focus on
+                            detailed diagnostics and advanced treatments, REVO's Serious Case package ensures a better
+                            approach to managing health.</p>
+                        <a href="#" class="btn btn-blue">Read More</a>
+                    </div>
+
+                    <div class="package-service-item bg-white">
+                        <div class="icon flex">
+                            <i class="fas fa-comments fa-2x"></i>
+                        </div>
+                        <h3>Emergency Case</h3>
+                        <p class="text text-sm">In critical situations that demand immediate medical intervention, our
+                            Emergency Case package at REVO is your rapid response solution. This package includes prompt
+                            medical attention, urgent diagnostics, and specialized care to address life-threatening
+                            conditions.</p>
+                        <a href="#" class="btn btn-blue">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of package services section -->
+
+        <!-- posts section -->
+        <section id="posts" class="posts py">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Latest Post</h2>
+                </div>
+                <div class="posts-inner grid">
+                    <article class="post-item bg-white">
+                        <div class="img">
+                            <img src="images/post-1.jpg">
+                        </div>
+                        <div class="content">
+                            <h4>Inspiring stories of person and family centered care during a global pandemic.</h4>
+                            <p class="text text-sm">In this heartfelt blog post, we delve into inspiring narratives that
+                                highlight the resilience, compassion, and dedication exhibited by healthcare providers
+                                and families during the unprecedented challenges of a global pandemic. </p>
+                            <p class="text text-sm">Explore stories of individuals who not only faced health crises
+                                head-on but also experienced the unwavering support</p>
+                            <div class="info flex">
+                                <small class="text text-sm"><i class="fas fa-clock"></i> October 27, 2021</small>
+                                <small class="text text-sm"><i class="fas fa-comment"></i> 5 comments</small>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-item bg-white">
+                        <div class="img">
+                            <img src="images/post-2.jpg">
+                        </div>
+                        <div class="content">
+                            <h4>Strategies for Maintaining Emotional Balance in Uncertain Times</h4>
+
+                            <p class="text text-sm">Explore practical tips and expert insights on maintaining mental
+                                wellness amidst the uncertainties of life. This blog post delves into effective
+                                strategies for coping with stress, anxiety, and emotional challenges.</p>
+                            <p class="text text-sm"> Discover how fostering mental well-being is crucial, especially in
+                                times of global upheaval, and gain valuable insights to nurture your emotional balance.
+                            </p>
+                            <div class="info flex">
+                                <small class="text text-sm"><i class="fas fa-clock"></i> October 27, 2021</small>
+                                <small class="text text-sm"><i class="fas fa-comment"></i> 5 comments</small>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-item bg-white">
+                        <div class="img">
+                            <img src="images/post-3.jpg">
+                        </div>
+                        <div class="content">
+                            <h4>Inspiring stories of person and Revolutionizing Healthcare Access.</h4>
+
+                            <p class="text text-sm">Delve into the world of telemedicine and its transformative impact
+                                on healthcare accessibility. This blog post explores the latest innovations in remote
+                                medical consultations, virtual diagnoses, and digital health solutions.</p>
+                            <p class="text text-sm">Uncover how technology is reshaping the landscape of healthcare
+                                delivery, making quality medical services more accessible to individuals worldwide</p>
+                            <div class="info flex">
+                                <small class="text text-sm"><i class="fas fa-clock"></i> October 27, 2021</small>
+                                <small class="text text-sm"><i class="fas fa-comment"></i> 5 comments</small>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- end of posts section -->
+
+        <!-- contact section -->
+        <section id="contact" class="contact py">
+            <div class="container grid">
+                <div class="contact-left">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2384.6268289831164!2d-6.214682984112116!3d53.29621947996855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486709e0c9c80f8f%3A0x92f408d10f2277c2!2sREVO!5e0!3m2!1sen!2snp!4v1636264848776!5m2!1sen!2snp"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="contact-right text-white text-center bg-blue">
+                    <div class="contact-head">
+                        <h3 class="lead">Contact Us</h3>
+                        <p class="text text-md">If you have any query then don't hesistate to contact us</p>
+                    </div>
+                    <form action="https://api.web3forms.com/submit" method="POST" return false;>
+                        <input type="hidden" name="access_key" value="edb52ad4-597e-4a08-bf10-59bc3ac2ffa7">
+                        <div class="form-element">
+                            <input type="text" name="name" class="form-control" placeholder="Your name">
+                        </div>
+                        <div class="form-element">
+                            <input type="email"name="email" class="form-control" placeholder="Your email">
+                        </div>
+                        <div class="form-element">
+                            <textarea rows="5" placeholder="Your Message" class="form-control"></textarea>
+                        </div>
+                        <button id="contactbtn" type="submit" class="btn btn-white btn-submit">
+                            <i class="fas fa-arrow-right"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- end of contact section -->
+    </main>
+
+    <!-- footer  -->
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <div class="footer-inner text-white py grid">
+                <div class="footer-item">
+                    <h3 class="footer-head">about us</h3>
+                    <div class="icon">
+                        <img src="images/logo.png">
+                    </div>
+
+                    <address>
+                        Medic Clinic <br>
+                        69 Deerpark Rd, Mount Merrion <br>
+                        Co. Dublin, A94 E9D3 <br>
+                        Ireland
+                    </address>
+                </div>
+
+                <div class="footer-item">
+                    <h3 class="footer-head">tags</h3>
+                    <ul class="tags-list flex">
+                        <li>medical care</li>
+                        <li>emergency</li>
+                        <li>therapy</li>
+                        <li>surgery</li>
+                        <li>medication</li>
+                        <li>nurse</li>
+                    </ul>
+                </div>
+
+                <div class="footer-item">
+                    <h3 class="footer-head">Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="text-white">Our Services</a></li>
+                        <li><a href="#" class="text-white">Our Plan</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white">Appointment Schedule</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-item">
+                    <h3 class="footer-head">make an appointment</h3>
+                    <p class="text text-md">Feel free on reaching out to us in situation</p>
+                    <p>We will be happy to help!!</p>
+                    <ul class="appointment-info">
+                        <li>8:00 AM - 11:00 AM</li>
+                        <li>2:00 PM - 05:00 PM</li>
+                        <li>8:00 PM - 11:00 PM</li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>revomedic@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+003 478 2834(00)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <ul class="flex">
+                    <li><a href="#" class="text-white flex"> <i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="text-white flex"> <i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="text-white flex"> <i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer  -->
+
+
+    <!-- custom js -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
